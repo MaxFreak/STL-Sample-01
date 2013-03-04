@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6033585D16E529160091FA74 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6033585C16E529160091FA74 /* main.cpp */; };
 		6033585F16E529160091FA74 /* STL_Sample_01.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6033585E16E529160091FA74 /* STL_Sample_01.1 */; };
+		6033586716E529D10091FA74 /* Class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6033586516E529D10091FA74 /* Class.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		6033585916E529160091FA74 /* STL Sample 01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "STL Sample 01"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6033585C16E529160091FA74 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6033585E16E529160091FA74 /* STL_Sample_01.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = STL_Sample_01.1; sourceTree = "<group>"; };
+		6033586516E529D10091FA74 /* Class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Class.cpp; sourceTree = "<group>"; };
+		6033586616E529D10091FA74 /* Class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Class.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				6033585C16E529160091FA74 /* main.cpp */,
+				6033586516E529D10091FA74 /* Class.cpp */,
+				6033586616E529D10091FA74 /* Class.h */,
 				6033585E16E529160091FA74 /* STL_Sample_01.1 */,
 			);
 			path = "STL Sample 01";
@@ -118,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6033585D16E529160091FA74 /* main.cpp in Sources */,
+				6033586716E529D10091FA74 /* Class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
