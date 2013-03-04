@@ -9,8 +9,11 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
 #include <unordered_map>
 
+void map01();
+void map02();
 void unordered_map01();
 void vector01();
 
@@ -20,10 +23,78 @@ int main(int argc, const char * argv[])
     // insert code here...
     std::cout << "Hello, World!\n";
     
+    map01();
+    map02();
     unordered_map01();
     vector01();
     
     return 0;
+}
+
+void display_sizes(const std::map<int, int> &nums1,
+                   const std::map<int, int> &nums2,
+                   const std::map<int, int> &nums3)
+{
+    std::cout << "nums1: " << nums1.size()
+    << " nums2: " << nums2.size()
+    << " nums3: " << nums3.size() << '\n';
+}
+
+void map01()
+{
+    std::cout << "\n\nmap01()\n";
+
+    std::map<int, int> nums1 {{3, 1}, {4, 1}, {5, 9}};
+    std::map<int, int> nums2;
+    std::map<int, int> nums3;
+
+    std::cout << "Initially:\n";
+    display_sizes(nums1, nums2, nums3);
+
+    // copy assignment copies data from nums1 to nums2
+    nums2 = nums1;
+
+    std::cout << "After assigment:\n";
+    display_sizes(nums1, nums2, nums3);
+
+    // move assignment moves data from nums1 to nums3,
+    // modifying both nums1 and nums3
+    nums3 = std::move(nums1);
+
+    std::cout << "After move assigment:\n";
+    display_sizes(nums1, nums2, nums3);
+}
+
+void map02()
+{
+    std::cout << "\n\nmap02()\n";
+
+    typedef std::map<std::string,int>  mapT;
+
+    mapT my_map;
+    my_map["x"] = 11;
+    my_map["x"] = 14;
+    my_map["y"] = 23;
+    for (int i = 0 ; i < 10000 ; ++i)
+    {
+        my_map["x" + std::to_string(i)] = i;
+    }
+    
+    std::cout << "size: " << my_map.size() << "\n";
+    
+    for (auto& x: my_map) std::cout << " " << x.first << ":" << x.second << "\n";
+    
+    mapT::iterator  it= my_map.find("x");
+    if( it != my_map.end() ) std::cout << "A: " << it->second << "\n";
+
+    it= my_map.find("z");
+    if( it != my_map.end() ) std::cout << "B: " << it->second << "\n";
+
+    // Accessing a non-existing element creates it
+    if( my_map["z"] == 42 ) std::cout << "Oha!\n";
+
+    it= my_map.find("z");
+    if( it != my_map.end() ) std::cout << "C: " << it->second << "\n";
 }
 
 typedef std::unordered_map<std::string,std::string> stringmap;
