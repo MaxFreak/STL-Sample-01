@@ -82,7 +82,12 @@ void map02()
     
     std::cout << "size: " << my_map.size() << "\n";
     
-    for (auto& x: my_map) std::cout << " " << x.first << ":" << x.second << "\n";
+    //for (auto& x: my_map) std::cout << " " << x.first << ":" << x.second << "\n";
+    //for (mapT::const_iterator ci = my_map.begin() ; ci != my_map.end() ; ++ci);
+    for (std::map<std::string,int>::const_iterator ci = my_map.begin() ; ci != my_map.end() ; ++ci)
+    {
+        std::cout << " " << ci->first << ":::" << ci->second << "\n";
+    }
     
     mapT::iterator  it= my_map.find("x");
     if( it != my_map.end() ) std::cout << "A: " << it->second << "\n";
