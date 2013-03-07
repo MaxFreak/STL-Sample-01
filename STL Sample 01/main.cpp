@@ -14,8 +14,35 @@
 
 void map01();
 void map02();
+void map03();
+void map04();
 void unordered_map01();
 void vector01();
+
+template<class T> unsigned int levenshtein_distance(const T &s1, const T & s2)
+{
+    const size_t len1 = s1.size(), len2 = s2.size();
+    std::vector<unsigned int> col(len2+1), prevCol(len2+1);
+    
+    for (unsigned int i = 0; i < prevCol.size(); i++)
+    {
+        prevCol[i] = i;
+    }
+    
+    for (unsigned int i = 0; i < len1; i++)
+    {
+        col[0] = i+1;
+        
+        for (unsigned int j = 0; j < len2; j++)
+        {
+            col[j+1] = std::min( std::min( 1 + col[j], 1 + prevCol[1 + j]), prevCol[j] + (s1[i]==s2[j] ? 0 : 1) );
+        }
+        
+        col.swap(prevCol);
+    }
+    
+    return prevCol[len2];
+}
 
 int main(int argc, const char * argv[])
 {
@@ -25,10 +52,57 @@ int main(int argc, const char * argv[])
     
     map01();
     map02();
+    map03();
+    map04();
     unordered_map01();
     vector01();
     
+    unsigned int uiEdit_dist = levenshtein_distance<std::string> ("Hallo", "Hal");
+    std::cout << "uiEdit_dist: " << uiEdit_dist << '\n';
+    
     return 0;
+}
+
+void map04()
+{
+    std::cout << "\n\nmap03()\n";
+
+    const char* messages[] =
+    {
+        "Beginning",
+        "Working",
+        "Finishing",
+        "Done"
+    };
+    
+    const char *str;
+    
+    std::map<std::string, const char *> strings;
+    std::map<int, const char *> stringids;
+    
+    strings["NanuKey"] = messages[0];
+    strings["HalloKey"] = messages[1];
+    strings["HuhuKey"] = messages[2];
+    strings["HelloKey"] = messages[3];
+    
+    stringids[8] = messages[0];
+    stringids[12] = messages[1];
+    stringids[14] = messages[2];
+    stringids[15] = messages[3];
+    
+    str = strings["NanuKey"];
+    str = stringids[12];
+    
+    std::cout << "strings: " << strings.size() << '\n';
+}
+
+void map03()
+{
+    std::cout << "\n\nmap03()\n";
+    
+    std::map<std::string, std::string> strings {{"Hallo", "Hallo"}, {"Huhu", "Huhu"}, {"Hello", "Hello"}};
+    
+    std::cout << "strings: " << strings.size() << '\n';
 }
 
 void display_sizes(const std::map<int, int> &nums1,
